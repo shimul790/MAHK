@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAHK – স্মার্ট কিচেন, বেটার লাইফ</title>
+<meta name="description" content="MAHK-এ পাবেন সব ধরনের কিচেন গ্যাজেট। ইনিমা গ্রাইন্ডার এখন মাত্র ১,১৫০ টাকা।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2340;
+    --orange:#ff8a00;
+    --green:#3aa655;
+    --teal:#0e8a9c;
+    --bg:#fffaf3;
+    --card:#fff;
+    --muted:#5b6678;
+    --border:#e5e8ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;color:var(--navy);background:var(--bg);line-height:1.6}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+  button,input,select,textarea{font-family:inherit}
+
+  header{background:#fff;position:sticky;top:0;z-index:30;box-shadow:0 1px 8px rgba(0,0,0,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:1.4rem}
+  .brand img{height:46px;width:46px;object-fit:contain;border-radius:8px}
+  .links{display:flex;gap:18px;align-items:center}
+  .links a{text-decoration:none;font-weight:600}
+  .links a:hover{color:var(--orange)}
+  .cartbtn{position:relative;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:9px 18px;font-weight:700;cursor:pointer;font-size:1rem}
+  .cartbtn .cnt{background:var(--orange);border-radius:999px;padding:0 8px;margin-left:6px;font-size:.85rem}
+
+  .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;border:0;border-radius:999px;padding:11px 24px;text-decoration:none;cursor:pointer;font-size:1.02rem;transition:filter .15s,transform .15s}
+  .btn:hover{filter:brightness(1.07)}
+  .btn:active{transform:scale(.99)}
+  .btn.green{background:var(--green)}
+  .btn.navy{background:var(--navy)}
+  .btn.block{display:block;width:100%;text-align:center}
+
+  .hero{padding:34px 0 20px}
+  .heroTop{text-align:center}
+  .heroTop .logo{height:120px;width:120px;margin:0 auto 10px;object-fit:contain;border-radius:24px;box-shadow:0 6px 20px rgba(15,35,64,.12)}
+  .heroTop h1{font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.25}
+  .heroTop h1 span{color:var(--green)}
+  .heroTop p{color:var(--muted);max-width:600px;margin:10px auto 0;font-size:1.08rem}
+
+  section{padding:32px 0}
+  h2{font-size:1.7rem;text-align:center;margin-bottom:20px}
+  h2 span{color:var(--orange)}
+
+  .feature{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;background:var(--card);border-radius:20px;padding:22px;box-shadow:0 6px 24px rgba(15,35,64,.08);align-items:center;position:relative}
+  .feature .pic{background:#fff;border-radius:14px;overflow:hidden;height:300px;display:flex;align-items:center;justify-content:center}
+  .feature .pic img{border-radius:14px;width:100%;height:100%;object-fit:contain;background:#fff}
+  .ribbon{position:absolute;top:14px;left:14px;background:var(--orange);color:#fff;font-weight:700;border-radius:8px;padding:2px 12px;z-index:2}
+  .tag{display:inline-block;background:#e8f6ec;color:var(--green);font-weight:700;font-size:.9rem;padding:3px 14px;border-radius:999px}
+  .feature h3{font-size:1.8rem;margin:10px 0 4px}
+  .price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:10px 0}
+  .now{font-size:2.2rem;font-weight:700;color:var(--orange)}
+  .was{font-size:1.2rem;color:var(--muted);text-decoration:line-through}
+  .save{background:var(--orange);color:#fff;font-size:.9rem;font-weight:700;border-radius:8px;padding:2px 10px}
+  .feature ul{list-style:none;margin:12px 0 18px}
+  .feature li{padding-left:28px;position:relative;margin:6px 0}
+  .feature li::before{content:"✔";position:absolute;left:0;color:var(--green);font-weight:800}
+
+  .usps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .usp{background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(15,35,64,.06)}
+  .usp .i{font-size:1.8rem}
+  .usp b{display:block;margin-top:4px}
+  .usp small{color:var(--muted)}
+
+  .tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+  .chip{background:#fff;border:2px solid var(--border);border-radius:999px;padding:7px 18px;font-weight:600;cursor:pointer;font-size:.98rem}
+  .chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .search{display:block;width:100%;max-width:440px;margin:0 auto 14px;padding:12px 18px;border-radius:999px;border:2px solid var(--border);font-size:1rem;background:#fff}
+  .search:focus{outline:none;border-color:var(--orange)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+  .card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(15,35,64,.07);display:flex;flex-direction:column;position:relative}
+  .card .ph{aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;font-size:4rem;overflow:hidden;padding:8px}
+  .card .ph img{width:100%;height:100%;object-fit:contain}
+  .card .b{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card h3{font-size:1.12rem;line-height:1.35}
+  .card .d{color:var(--muted);font-size:.92rem;flex:1}
+  .card .pr{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .card .pr b{font-size:1.3rem;color:var(--orange)}
+  .card .pr s{color:var(--muted);font-size:.95rem}
+  .card .ask{color:var(--teal);font-weight:600}
+  .card .off{position:absolute;top:10px;left:10px;background:var(--orange);color:#fff;font-size:.8rem;font-weight:700;border-radius:8px;padding:1px 9px}
+  .empty{text-align:center;color:var(--muted);padding:30px}
+
+  .delivery{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:580px;margin:0 auto}
+  .dbox{background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(15,35,64,.06)}
+  .dbox b{display:block;font-size:1.6rem;color:var(--teal)}
+  .adv{background:#fff3e0;border:1px dashed var(--orange);border-radius:12px;padding:12px 16px;margin:14px auto 0;max-width:580px;text-align:center;font-weight:600}
+
+  .paybox{background:var(--card);border-radius:14px;padding:16px;margin:14px auto 0;max-width:580px;box-shadow:0 4px 14px rgba(15,35,64,.06);text-align:center}
+  .paybox h3{font-size:1.15rem;margin-bottom:6px;color:var(--navy)}
+  .paynums{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .paypill{background:#f4f7fb;border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-weight:700;font-size:.98rem}
+  .paypill span{color:var(--orange)}
+
+  .contact{background:var(--navy);color:#fff;border-radius:22px;padding:30px 22px;text-align:center}
+  .contact h2{color:#fff}
+  .contact p{opacity:.9;margin-bottom:16px}
+
+  footer{text-align:center;padding:26px 0 90px;color:var(--muted);font-size:.95rem}
+  .float{position:fixed;right:16px;bottom:16px;background:#25d366;color:#fff;border-radius:999px;padding:12px 20px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:20}
+
+  .ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;display:none}
+  .ov.open{display:block}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:50;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+  .drawer.open{transform:none}
+  .dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #eee;font-weight:700;font-size:1.2rem}
+  .dh button{background:none;border:0;font-size:1.6rem;cursor:pointer}
+  .db{flex:1;overflow:auto;padding:14px 18px}
+  .item{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0}
+  .item .th{width:54px;height:54px;border-radius:10px;background:#fff;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.6rem;overflow:hidden;flex-shrink:0}
+  .item .th img{width:100%;height:100%;object-fit:contain}
+  .item .nm{flex:1;font-weight:600;line-height:1.3}
+  .item .nm small{display:block;color:var(--muted);font-weight:400}
+  .qty{display:flex;align-items:center;gap:6px}
+  .qty button{width:28px;height:28px;border-radius:50%;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:1rem}
+  .rm{background:none;border:0;color:#c0392b;cursor:pointer;font-size:.85rem;margin-top:4px;display:inline-block}
+  .df{border-top:1px solid #eee;padding:14px 18px;display:grid;gap:8px;background:#fafafa}
+  .df input,.df textarea,.df select{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1rem}
+  .sum div{display:flex;justify-content:space-between}
+  .sum .t{font-weight:700;font-size:1.15rem;border-top:1px solid #ddd;margin-top:4px;padding-top:4px}
+  .small{font-size:.85rem;color:var(--muted);text-align:center}
+
+  @media(max-width:760px){
+    .feature{grid-template-columns:1fr}
+    .feature .pic{height:240px}
+    .usps{grid-template-columns:1fr 1fr}
+    .links a{display:none}
+    .heroTop .logo{height:96px;width:96px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%230f2340'/%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='%23ff8a00' stroke-width='5'/%3E%3Ctext x='60' y='69' font-family='sans-serif' font-size='28' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EMAHK%3C/text%3E%3C/svg%3E" alt="MAHK">
+      <span>MAHK</span>
+    </a>
+    <div class="links">
+      <a href="#top">হোম</a>
+      <a href="#products">সব পণ্য</a>
+      <a href="#delivery">ডেলিভারি</a>
+      <a href="#contact">যোগাযোগ</a>
+      <button class="cartbtn" id="openCart">🛒 কার্ট<span class="cnt" id="cartCount">০</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero wrap">
+    <div class="heroTop">
+      <img class="logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Crect width='160' height='160' rx='32' fill='%230f2340'/%3E%3Ccircle cx='80' cy='80' r='60' fill='none' stroke='%23ff8a00' stroke-width='6'/%3E%3Ctext x='80' y='86' font-family='sans-serif' font-size='36' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EMAHK%3C/text%3E%3Ctext x='80' y='110' font-family='sans-serif' font-size='13' font-weight='bold' fill='%233aa655' text-anchor='middle'%3ESMART KITCHEN%3C/text%3E%3C/svg%3E" alt="MAHK – স্মার্ট কিচেন, বেটার লাইফ">
+      <h1>স্মার্ট কিচেন, <span>বেটার লাইফ</span></h1>
+      <p>আপনার রান্নাঘরের প্রয়োজনীয় সব গ্যাজেট এক জায়গায়।</p>
+    </div>
+  </div>
+
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <h2>আজকের <span>সেরা অফার</span></h2>
+      <div class="feature">
+        <div class="ribbon">অফার</div>
+        <div class="pic">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.Jur-pbnRLI0aWs-phGCc4QHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="ইনিমা গ্রাইন্ডার">
+        </div>
+        <div>
+          <span class="tag">হোম স্পেশাল</span>
+          <h3>ইনিমা গ্রাইন্ডার</h3>
+          <p style="color:var(--muted)">আপনার রান্নার সঠিক সঙ্গী!</p>
+          <div class="price"><span class="now">৳১,১৫০</span><span class="was">৳১,৩৯৯</span><span class="save">সাশ্রয় ৳২৪৯</span></div>
+          <ul>
+            <li>জিরা, ধনিয়া, মরিচ, গোল মরিচসহ সব শুকনা মসলা গুঁড়া করা যায়</li>
+            <li>আদা, রসুন, পেয়াজ, কাঁচা মরিচের মসৃণ পেস্ট করা যায়</li>
+            <li>শক্তিশালী মোটর এবং টেকসই স্টেইনলেস স্টিল ব্লেড</li>
+          </ul>
+          <button class="btn green" data-add="inima-grinder">🛒 কার্টে যোগ করুন</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="usps">
+        <div class="usp"><div class="i">🚚</div><b>সারা দেশে ডেলিভারি</b><small>ঢাকায় ৳৭০, বাইরে ৳১৩০</small></div>
+        <div class="usp"><div class="i">💬</div><b>WhatsApp-এ অর্ডার</b><small>সহজ ও দ্রুত</small></div>
+        <div class="usp"><div class="i">🍳</div><b>কিচেন গ্যাজেট</b><small>রান্না হবে আরও সহজ</small></div>
+        <div class="usp"><div class="i">🏷️</div><b>অফার প্রাইস</b><small>সাশ্রয়ী দামে</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="wrap">
+      <h2>আমাদের <span>পণ্য</span></h2>
+      <input class="search" id="search" type="search" placeholder="🔍 পণ্যের নাম বা বিবরণ দিয়ে খুঁজুন...">
+      <div class="tools" id="cats"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="delivery">
+    <div class="wrap">
+      <h2>ডেলিভারি <span>ও পেমেন্ট</span></h2>
+      <div class="delivery">
+        <div class="dbox"><b id="rateInside">৳৭০</b>ঢাকার ভিতরে</div>
+        <div class="dbox"><b id="rateOutside">৳১৩০</b>ঢাকার বাইরে</div>
+      </div>
+      <div class="adv">অর্ডার কনফার্ম করতে ডেলিভারি চার্জ অ্যাডভান্স পেমেন্ট করতে হবে।</div>
+      <div class="paybox">
+        <h3>অ্যাডভান্স পেমেন্ট মাধ্যম (Personal)</h3>
+        <div class="paynums">
+          <div class="paypill"><span>bKash:</span> <b id="bkashShow">01627909535</b></div>
+          <div class="paypill"><span>Nagad:</span> <b id="nagadShow">01627909535</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>যোগাযোগ করুন</h2>
+        <p>কোনো পণ্য সম্পর্কে জানতে বা অর্ডার করতে আমাদের WhatsApp-এ মেসেজ দিন।</p>
+        <a class="btn" id="waContact" href="#" target="_blank" rel="noopener">WhatsApp: 01627909535</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><strong>MAHK</strong> · স্মার্ট কিচেন, বেটার লাইফ<br>© 2025–<span id="yr">2026</span> MAHK। সর্বস্বত্ব সংরক্ষিত।</div>
+</footer>
+
+<a class="float" id="waFloat" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh"><span>🛒 আপনার কার্ট</span><button id="closeCart" aria-label="বন্ধ">×</button></div>
+  <div class="db" id="cartItems"></div>
+  <form class="df" id="checkout">
+    <input id="name" required placeholder="আপনার নাম">
+    <input id="phone" type="tel" required placeholder="মোবাইল নম্বর (01XXXXXXXXX)">
+    <textarea id="addr" rows="2" required placeholder="ডেলিভারি ঠিকানা"></textarea>
+    <select id="area"></select>
+    <div class="sum">
+      <div><span>পণ্যের দাম</span><span id="sub">৳০</span></div>
+      <div><span>ডেলিভারি চার্জ</span><span id="del">৳৭০</span></div>
+      <div class="t"><span>সর্বমোট</span><span id="total">৳৭০</span></div>
+    </div>
+    <button class="btn green block" type="submit">WhatsApp-এ অর্ডার পাঠান</button>
+    <div class="small">অ্যাডভান্স পেমেন্টের নিয়ম WhatsApp-এ জানানো হবে।</div>
+  </form>
+</aside>
+
+<script>
+var STORE = {
+  whatsapp: "8801627909535",
+  bkash: "01627909535",
+  nagad: "01627909535"
+};
+
+var DELIVERY_OPTIONS = [
+  {id:"inside", label:"ঢাকার ভিতরে", fee:70},
+  {id:"outside", label:"ঢাকার বাইরে", fee:130}
+];
+
+var CATS = [
+  {id:"all", name:"সব পণ্য"},
+  {id:"grinder", name:"গ্রাইন্ডার ও ব্লেন্ডার"},
+  {id:"cooking", name:"কুকিং ও ফ্রাইং"},
+  {id:"cutting", name:"কাটা ও স্লাইস"},
+  {id:"storage", name:"স্টোরেজ ও অর্গানাইজার"}
+];
+
+var PRODUCTS = [
+  {
+    id:"inima-grinder",
+    name:"ইনিমা গ্রাইন্ডার",
+    cat:"grinder",
+    price:1150,
+    oldPrice:1399,
+    img:"https://tse4.mm.bing.net/th/id/OIP.Jur-pbnRLI0aWs-phGCc4QHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    emoji:"🫙",
+    desc:"শুকনা মসলা গুঁড়া ও আদা-রসুন-পেয়াজের পেস্ট, দুটোই করা যায়।"
+  },
+  {
+    id:"chopper-01",
+    name:"ইলেকট্রিক ভেজিটেবল চপার",
+    cat:"grinder",
+    price:null,
+    oldPrice:null,
+    img:"https://tse1.mm.bing.net/th/id/OIP.7o5D2muzybRLadHrEfivzwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    emoji:"🥕",
+    desc:"সবজি, পেঁয়াজ ও মসলা দ্রুত কুচি করার জন্য।"
+  },
+  {
+    id:"blender-01",
+    name:"হ্যান্ড ব্লেন্ডার",
+    cat:"grinder",
+    price:null,
+    oldPrice:null,
+    img:"https://tse1.mm.bing.net/th/id/OIP.RL9QGmPwpLKW5gK2a_oXLgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    emoji:"🥤",
+    desc:"জুস, স্মুদি, মিল্কশেক ও স্যুপ ব্লেন্ড করার জন্য।"
+  },
+  {
+    id:"pan-01",
+    name:"নন-স্টিক ফ্রাইং প্যান",
+    cat:"cooking",
+    price:null,
+    oldPrice:null,
+    img:"https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&w=600&q=80",
+    emoji:"🍳",
+    desc:"কম তেলে ডিম, পরোটা ও সহজ রান্নার জন্য।"
+  },
+  {
+    id:"slicer-01",
+    name:"ভেজিটেবল স্লাইসার",
+    cat:"cutting",
+    price:null,
+    oldPrice:null,
+    img:"https://m.media-amazon.com/images/I/81no1o-CfTL._AC_.jpg",
+    emoji:"🔪",
+    desc:"শসা, আলু ও গাজরের সমান স্লাইস করার জন্য।"
+  },
+  {
+    id:"jars-01",
+    name:"মসলার কৌটা সেট",
+    cat:"storage",
+    price:null,
+    oldPrice:null,
+    img:"https://tse1.explicit.bing.net/th/id/OIP.PlrpfAobWG5sRgun8zW5JwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    emoji:"🧂",
+    desc:"রান্নাঘরের মসলা ও শুকনা উপাদান গুছিয়ে রাখার জন্য।"
+  }
+];
+
+function bn(n){ return "৳" + Number(n || 0).toLocaleString("bn-BD"); }
+function byId(id){ return PRODUCTS.find(function(p){ return p.id === id; }); }
+function $(id){ return document.getElementById(id); }
+function esc(s){
+  return String(s).replace(/[&<>"]/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
+  });
+}
+
+var cart = {};
+try { cart = JSON.parse(localStorage.getItem("mahk_cart") || "{}") || {}; } catch(e){ cart = {}; }
+function saveCart(){ try { localStorage.setItem("mahk_cart", JSON.stringify(cart)); } catch(e){} }
+
+var curCat = "all", curQ = "";
+
+function initStore(){
+  if ($("bkashShow")) $("bkashShow").textContent = STORE.bkash;
+  if ($("nagadShow")) $("nagadShow").textContent = STORE.nagad;
+
+  var inside = DELIVERY_OPTIONS.find(function(d){ return d.id === "inside"; }) || DELIVERY_OPTIONS[0];
+  var outside = DELIVERY_OPTIONS.find(function(d){ return d.id === "outside"; }) || DELIVERY_OPTIONS[DELIVERY_OPTIONS.length - 1];
+  if (inside && $("rateInside")) $("rateInside").textContent = bn(inside.fee);
+  if (outside && $("rateOutside")) $("rateOutside").textContent = bn(outside.fee);
+
+  $("area").innerHTML = DELIVERY_OPTIONS.map(function(d){
+    return '<option value="'+esc(d.fee)+'" data-label="'+esc(d.label)+'">'+esc(d.label)+' ('+bn(d.fee)+')</option>';
+  }).join("");
+}
+
+function thumb(p){
+  return p.img
+    ? '<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.parentNode.textContent=\''+esc(p.emoji)+'\'">'
+    : esc(p.emoji);
+}
+
+function renderCats(){
+  $("cats").innerHTML = CATS.map(function(c){
+    return '<button class="chip'+(c.id===curCat?' on':'')+'" data-cat="'+esc(c.id)+'">'+esc(c.name)+'</button>';
+  }).join("");
+}
+
+function renderGrid(){
+  var list = PRODUCTS.filter(function(p){
+    var catMatch = (curCat === "all" || p.cat === curCat);
+    var textBlob = ((p.name || "") + " " + (p.desc || "")).toLowerCase();
+    var searchMatch = (!curQ || textBlob.indexOf(curQ) > -1);
+    return catMatch && searchMatch;
+  });
+
+  if (!list.length){
+    $("grid").innerHTML = '<div class="empty" style="grid-column:1/-1">কোনো পণ্য পাওয়া যায়নি।</div>';
+    return;
+  }
+
+  $("grid").innerHTML = list.map(function(p){
+    var off = (p.price && p.oldPrice && p.oldPrice > p.price)
+      ? '<span class="off">-'+Math.round((p.oldPrice - p.price) / p.oldPrice * 100).toLocaleString("bn-BD")+'%</span>'
+      : '';
+    var pr = p.price
+      ? '<div class="pr"><b>'+bn(p.price)+'</b>'+(p.oldPrice?'<s>'+bn(p.oldPrice)+'</s>':'')+'</div>'
+      : '<div class="pr"><span class="ask">দাম জানতে মেসেজ করুন</span></div>';
+    var btn = p.price
+      ? '<button class="btn block" data-add="'+esc(p.id)+'">🛒 কার্টে যোগ করুন</button>'
+      : '<a class="btn navy block" target="_blank" rel="noopener" href="https://wa.me/'+STORE.whatsapp+'?text='+encodeURIComponent("আসসালামু আলাইকুম, আমি এই পণ্যটির দাম ও বিস্তারিত জানতে চাই: "+p.name)+'">💬 দাম জানুন</a>';
+
+    return '<div class="card">'+off+'<div class="ph">'+thumb(p)+'</div><div class="b"><h3>'+esc(p.name)+'</h3><div class="d">'+esc(p.desc||"")+'</div>'+pr+btn+'</div></div>';
+  }).join("");
+}
+
+function cartTotals(){
+  var sub = 0, n = 0;
+  Object.keys(cart).forEach(function(id){
+    var p = byId(id);
+    if (p && p.price && cart[id] > 0){
+      sub += p.price * cart[id];
+      n += cart[id];
+    }
+  });
+  return {sub:sub, n:n};
+}
+
+function renderCart(){
+  var ids = Object.keys(cart).filter(function(id){
+    var p = byId(id);
+    return p && p.price && cart[id] > 0;
+  });
+  var t = cartTotals();
+  $("cartCount").textContent = t.n.toLocaleString("bn-BD");
+
+  if (!ids.length){
+    $("cartItems").innerHTML = '<div class="empty">আপনার কার্ট খালি।</div>';
+  } else {
+    $("cartItems").innerHTML = ids.map(function(id){
+      var p = byId(id);
+      return '<div class="item"><div class="th">'+thumb(p)+'</div><div class="nm">'+esc(p.name)+'<small>'+bn(p.price)+'</small></div>'+
+        '<div><div class="qty"><button type="button" data-dec="'+esc(id)+'">−</button><span>'+cart[id].toLocaleString("bn-BD")+'</span><button type="button" data-inc="'+esc(id)+'">+</button></div>'+
+        '<button type="button" class="rm" data-rm="'+esc(id)+'">মুছুন</button></div></div>';
+    }).join("");
+  }
+
+  var del = ids.length ? Number($("area").value || 0) : 0;
+  $("sub").textContent = bn(t.sub);
+  $("del").textContent = bn(del);
+  $("total").textContent = bn(t.sub + del);
+  saveCart();
+}
+
+function openCart(){ $("drawer").classList.add("open"); $("ov").classList.add("open"); }
+function closeCart(){ $("drawer").classList.remove("open"); $("ov").classList.remove("open"); }
+
+document.addEventListener("click", function(e){
+  var el = e.target.closest("[data-add],[data-inc],[data-dec],[data-rm],[data-cat]");
+  if (!el) return;
+
+  var add = el.getAttribute("data-add");
+  if (add){ cart[add] = (cart[add] || 0) + 1; renderCart(); openCart(); return; }
+
+  var inc = el.getAttribute("data-inc");
+  if (inc){ cart[inc] = (cart[inc] || 0) + 1; renderCart(); return; }
+
+  var dec = el.getAttribute("data-dec");
+  if (dec){ cart[dec] = (cart[dec] || 0) - 1; if (cart[dec] <= 0) delete cart[dec]; renderCart(); return; }
+
+  var rm = el.getAttribute("data-rm");
+  if (rm){ delete cart[rm]; renderCart(); return; }
+
+  var c = el.getAttribute("data-cat");
+  if (c){ curCat = c; renderCats(); renderGrid(); }
+});
+
+$("openCart").addEventListener("click", openCart);
+$("closeCart").addEventListener("click", closeCart);
+$("ov").addEventListener("click", closeCart);
+$("area").addEventListener("change", renderCart);
+$("search").addEventListener("input", function(){
+  curQ = this.value.trim().toLowerCase();
+  renderGrid();
+});
+
+$("checkout").addEventListener("submit", function(e){
+  e.preventDefault();
+  var ids = Object.keys(cart).filter(function(id){
+    var p = byId(id);
+    return p && p.price && cart[id] > 0;
+  });
+  if (!ids.length){
+    alert("আগে কার্টে পণ্য যোগ করুন।");
+    return;
+  }
+  var t = cartTotals();
+  var del = Number($("area").value || 0);
+  var lines = ids.map(function(id){
+    var p = byId(id);
+    return "• " + p.name + " × " + cart[id] + " = " + bn(p.price * cart[id]);
+  }).join("\n");
+  var areaText = $("area").options[$("area").selectedIndex].text;
+
+  var msg =
+    "নতুন অর্ডার – MAHK\n\n" +
+    lines + "\n\n" +
+    "পণ্যের দাম: " + bn(t.sub) + "\n" +
+    "ডেলিভারি: " + areaText + "\n" +
+    "সর্বমোট: " + bn(t.sub + del) + "\n\n" +
+    "নাম: " + $("name").value.trim() + "\n" +
+    "মোবাইল: " + $("phone").value.trim() + "\n" +
+    "ঠিকানা: " + $("addr").value.trim() + "\n\n" +
+    "নোট: অর্ডার কনফার্ম করতে অ্যাডভান্স পেমেন্ট সংক্রান্ত তথ্য জানতে চাই।";
+
+  window.open("https://wa.me/" + STORE.whatsapp + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+});
+
+var hello = "https://wa.me/" + STORE.whatsapp + "?text=" + encodeURIComponent("আসসালামু আলাইকুম, আমি MAHK থেকে পণ্য কিনতে চাই।");
+$("waFloat").href = hello;
+$("waContact").href = hello;
+$("yr").textContent = Math.max(2026, new Date().getFullYear());
+
+initStore();
+renderCats();
+renderGrid();
+renderCart();
+</script>
+</body>
+</html>
