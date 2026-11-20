@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MAHK – স্মার্ট কিচেন, বেটার লাইফ</title>
 <meta name="description" content="MAHK-এ পাবেন সব ধরনের কিচেন গ্যাজেট। ইনিমা গ্রাইন্ডার এখন মাত্র ১,১৫০ টাকা।">
+
+<!-- Open Graph / Meta Ads Link Preview Tags -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="MAHK – স্মার্ট কিচেন, বেটার লাইফ">
+<meta property="og:description" content="MAHK-এ পাবেন সব ধরনের কিচেন গ্যাজেট। ইনিমা গ্রাইন্ডার এখন মাত্র ১,১৫০ টাকা। সারা দেশে হোম ডেলিভারি।">
+<meta property="og:image" content="https://tse4.mm.bing.net/th/id/OIP.Jur-pbnRLI0aWs-phGCc4QHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+
+<!-- Meta Pixel Code -->
+<script>
+var META_PIXEL_ID = "3713748535468214";
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3713748535468214');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3713748535468214&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -111,6 +137,7 @@
   .contact p{opacity:.9;margin-bottom:16px}
 
   footer{text-align:center;padding:26px 0 90px;color:var(--muted);font-size:.95rem}
+  footer a{color:var(--navy);text-decoration:underline;cursor:pointer}
   .float{position:fixed;right:16px;bottom:16px;background:#25d366;color:#fff;border-radius:999px;padding:12px 20px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:20}
 
   .ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;display:none}
@@ -133,6 +160,15 @@
   .sum div{display:flex;justify-content:space-between}
   .sum .t{font-weight:700;font-size:1.15rem;border-top:1px solid #ddd;margin-top:4px;padding-top:4px}
   .small{font-size:.85rem;color:var(--muted);text-align:center}
+
+  /* Policy Modal for Meta Ads Compliance */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:60;display:none;align-items:center;justify-content:center;padding:16px}
+  .modal.open{display:flex}
+  .mbox{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .mh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #eee;font-weight:700;font-size:1.15rem}
+  .mh button{background:none;border:0;font-size:1.5rem;cursor:pointer}
+  .mb{padding:18px;overflow:auto;font-size:.96rem;color:var(--navy);line-height:1.7}
+  .mb h4{margin:12px 0 4px;color:var(--orange)}
 
   @media(max-width:760px){
     .feature{grid-template-columns:1fr}
@@ -244,7 +280,11 @@
 </main>
 
 <footer>
-  <div class="wrap"><strong>MAHK</strong> · স্মার্ট কিচেন, বেটার লাইফ<br>© 2025–<span id="yr">2026</span> MAHK। সর্বস্বত্ব সংরক্ষিত।</div>
+  <div class="wrap">
+    <strong>MAHK</strong> · স্মার্ট কিচেন, বেটার লাইফ<br>
+    <a id="openPrivacy">প্রাইভেসি পলিসি</a> · <a id="openReturn">রিটার্ন ও রিফান্ড পলিসি</a><br>
+    © 2025–<span id="yr">2026</span> MAHK। সর্বস্বত্ব সংরক্ষিত।
+  </div>
 </footer>
 
 <a class="float" id="waFloat" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
@@ -268,7 +308,26 @@
   </form>
 </aside>
 
+<!-- Policy Modal -->
+<div class="modal" id="policyModal">
+  <div class="mbox">
+    <div class="mh"><span id="policyTitle">পলিসি</span><button id="closePolicy" aria-label="বন্ধ">×</button></div>
+    <div class="mb" id="policyBody"></div>
+  </div>
+</div>
+
 <script>
+// Helper function to fire Meta Pixel events safely
+function trackPixel(eventName, params) {
+  if (typeof fbq === "function" && window.META_PIXEL_ID && window.META_PIXEL_ID !== "YOUR_PIXEL_ID_HERE") {
+    if (params) {
+      fbq('track', eventName, params);
+    } else {
+      fbq('track', eventName);
+    }
+  }
+}
+
 var STORE = {
   whatsapp: "8801627909535",
   bkash: "01627909535",
@@ -378,11 +437,23 @@ function initStore(){
   $("area").innerHTML = DELIVERY_OPTIONS.map(function(d){
     return '<option value="'+esc(d.fee)+'" data-label="'+esc(d.label)+'">'+esc(d.label)+' ('+bn(d.fee)+')</option>';
   }).join("");
+
+  // Fire ViewContent for the main featured product on load
+  var featured = byId("inima-grinder");
+  if (featured) {
+    trackPixel('ViewContent', {
+      content_name: featured.name,
+      content_ids: [featured.id],
+      content_type: 'product',
+      value: featured.price,
+      currency: 'BDT'
+    });
+  }
 }
 
 function thumb(p){
   return p.img
-    ? '<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.parentNode.textContent=\''+esc(p.emoji)+'\'">'
+    ? '<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.parentNode.textContent=''+esc(p.emoji)+''">'
     : esc(p.emoji);
 }
 
@@ -414,7 +485,7 @@ function renderGrid(){
       : '<div class="pr"><span class="ask">দাম জানতে মেসেজ করুন</span></div>';
     var btn = p.price
       ? '<button class="btn block" data-add="'+esc(p.id)+'">🛒 কার্টে যোগ করুন</button>'
-      : '<a class="btn navy block" target="_blank" rel="noopener" href="https://wa.me/'+STORE.whatsapp+'?text='+encodeURIComponent("আসসালামু আলাইকুম, আমি এই পণ্যটির দাম ও বিস্তারিত জানতে চাই: "+p.name)+'">💬 দাম জানুন</a>';
+      : '<a class="btn navy block" data-inquire="'+esc(p.id)+'" target="_blank" rel="noopener" href="https://wa.me/'+STORE.whatsapp+'?text='+encodeURIComponent("আসসালামু আলাইকুম, আমি এই পণ্যটির দাম ও বিস্তারিত জানতে চাই: "+p.name)+'">💬 দাম জানুন</a>';
 
     return '<div class="card">'+off+'<div class="ph">'+thumb(p)+'</div><div class="b"><h3>'+esc(p.name)+'</h3><div class="d">'+esc(p.desc||"")+'</div>'+pr+btn+'</div></div>';
   }).join("");
@@ -458,15 +529,41 @@ function renderCart(){
   saveCart();
 }
 
-function openCart(){ $("drawer").classList.add("open"); $("ov").classList.add("open"); }
+function openCart(){
+  $("drawer").classList.add("open");
+  $("ov").classList.add("open");
+  var t = cartTotals();
+  if (t.n > 0) {
+    trackPixel('InitiateCheckout', {
+      num_items: t.n,
+      value: t.sub,
+      currency: 'BDT'
+    });
+  }
+}
 function closeCart(){ $("drawer").classList.remove("open"); $("ov").classList.remove("open"); }
 
 document.addEventListener("click", function(e){
-  var el = e.target.closest("[data-add],[data-inc],[data-dec],[data-rm],[data-cat]");
+  var el = e.target.closest("[data-add],[data-inc],[data-dec],[data-rm],[data-cat],[data-inquire]");
   if (!el) return;
 
   var add = el.getAttribute("data-add");
-  if (add){ cart[add] = (cart[add] || 0) + 1; renderCart(); openCart(); return; }
+  if (add){
+    cart[add] = (cart[add] || 0) + 1;
+    var p = byId(add);
+    if (p) {
+      trackPixel('AddToCart', {
+        content_name: p.name,
+        content_ids: [p.id],
+        content_type: 'product',
+        value: p.price || 0,
+        currency: 'BDT'
+      });
+    }
+    renderCart();
+    openCart();
+    return;
+  }
 
   var inc = el.getAttribute("data-inc");
   if (inc){ cart[inc] = (cart[inc] || 0) + 1; renderCart(); return; }
@@ -478,16 +575,33 @@ document.addEventListener("click", function(e){
   if (rm){ delete cart[rm]; renderCart(); return; }
 
   var c = el.getAttribute("data-cat");
-  if (c){ curCat = c; renderCats(); renderGrid(); }
+  if (c){ curCat = c; renderCats(); renderGrid(); return; }
+
+  var inq = el.getAttribute("data-inquire");
+  if (inq){
+    var pInq = byId(inq);
+    trackPixel('Contact', {
+      content_name: pInq ? pInq.name : inq,
+      content_ids: [inq]
+    });
+  }
 });
 
 $("openCart").addEventListener("click", openCart);
 $("closeCart").addEventListener("click", closeCart);
 $("ov").addEventListener("click", closeCart);
 $("area").addEventListener("change", renderCart);
+
+var searchTimer;
 $("search").addEventListener("input", function(){
   curQ = this.value.trim().toLowerCase();
   renderGrid();
+  clearTimeout(searchTimer);
+  if (curQ.length >= 2) {
+    searchTimer = setTimeout(function(){
+      trackPixel('Search', { search_string: curQ });
+    }, 800);
+  }
 });
 
 $("checkout").addEventListener("submit", function(e){
@@ -502,6 +616,17 @@ $("checkout").addEventListener("submit", function(e){
   }
   var t = cartTotals();
   var del = Number($("area").value || 0);
+  var grandTotal = t.sub + del;
+
+  // Track Purchase / Order Submission in Meta Pixel
+  trackPixel('Purchase', {
+    content_ids: ids,
+    content_type: 'product',
+    num_items: t.n,
+    value: grandTotal,
+    currency: 'BDT'
+  });
+
   var lines = ids.map(function(id){
     var p = byId(id);
     return "• " + p.name + " × " + cart[id] + " = " + bn(p.price * cart[id]);
@@ -513,7 +638,7 @@ $("checkout").addEventListener("submit", function(e){
     lines + "\n\n" +
     "পণ্যের দাম: " + bn(t.sub) + "\n" +
     "ডেলিভারি: " + areaText + "\n" +
-    "সর্বমোট: " + bn(t.sub + del) + "\n\n" +
+    "সর্বমোট: " + bn(grandTotal) + "\n\n" +
     "নাম: " + $("name").value.trim() + "\n" +
     "মোবাইল: " + $("phone").value.trim() + "\n" +
     "ঠিকানা: " + $("addr").value.trim() + "\n\n" +
@@ -525,6 +650,40 @@ $("checkout").addEventListener("submit", function(e){
 var hello = "https://wa.me/" + STORE.whatsapp + "?text=" + encodeURIComponent("আসসালামু আলাইকুম, আমি MAHK থেকে পণ্য কিনতে চাই।");
 $("waFloat").href = hello;
 $("waContact").href = hello;
+
+$("waFloat").addEventListener("click", function(){ trackPixel('Contact', { content_name: 'WhatsApp Float' }); });
+$("waContact").addEventListener("click", function(){ trackPixel('Contact', { content_name: 'WhatsApp Contact Section' }); });
+
+// Policy Modals (Required for Meta Ads Trust & Compliance)
+var POLICIES = {
+  privacy: {
+    title: "প্রাইভেসি পলিসি (Privacy Policy)",
+    body: "<p>MAHK আপনার ব্যক্তিগত তথ্যের গোপনীয়তা রক্ষায় প্রতিশ্রুতিবদ্ধ।</p>" +
+          "<h4>আমরা কী তথ্য সংগ্রহ করি?</h4><p>অর্ডার ডেলিভারির জন্য আমরা শুধুমাত্র আপনার নাম, মোবাইল নম্বর এবং ডেলিভারি ঠিকানা সংগ্রহ করি।</p>" +
+          "<h4>তথ্যের ব্যবহার</h4><p>আপনার তথ্য শুধুমাত্র পণ্য ডেলিভারি এবং কাস্টমার সাপোর্টের কাজে ব্যবহৃত হয়। আমরা কোনো তৃতীয় পক্ষের কাছে আপনার তথ্য বিক্রি বা শেয়ার করি না।</p>" +
+          "<h4>কুকিজ ও পিক্সেল</h4><p>বিজ্ঞাপনের মান উন্নত করতে এবং আপনাকে প্রাসঙ্গিক অফার দেখাতে আমাদের ওয়েবসাইটে Meta Pixel ব্যবহৃত হতে পারে।</p>"
+  },
+  returns: {
+    title: "রিটার্ন ও রিফান্ড পলিসি (Return & Refund Policy)",
+    body: "<p>গ্রাহক সন্তুষ্টি আমাদের প্রধান লক্ষ্য।</p>" +
+          "<h4>পণ্য চেক ও রিটার্ন</h4><p>ডেলিভারি ম্যানের সামনে পণ্য চেক করে নেওয়ার অনুরোধ করা হচ্ছে। পণ্যে কোনো ত্রুটি বা ড্যামেজ থাকলে সাথে সাথে ডেলিভারি ম্যানের কাছে ফেরত দিন অথবা ২৪ ঘণ্টার মধ্যে আমাদের WhatsApp-এ (01627909535) জানান।</p>" +
+          "<h4>রিফান্ড</h4><p>ত্রুটিপূর্ণ পণ্যের ক্ষেত্রে আমরা বিনামূল্যে পণ্য পরিবর্তন করে দেব অথবা ৩-৫ কার্যদিবসের মধ্যে বিকাশ/নগদের মাধ্যমে রিফান্ড প্রদান করব।</p>"
+  }
+};
+
+$("openPrivacy").addEventListener("click", function(){
+  $("policyTitle").textContent = POLICIES.privacy.title;
+  $("policyBody").innerHTML = POLICIES.privacy.body;
+  $("policyModal").classList.add("open");
+});
+$("openReturn").addEventListener("click", function(){
+  $("policyTitle").textContent = POLICIES.returns.title;
+  $("policyBody").innerHTML = POLICIES.returns.body;
+  $("policyModal").classList.add("open");
+});
+$("closePolicy").addEventListener("click", function(){ $("policyModal").classList.remove("open"); });
+$("policyModal").addEventListener("click", function(e){ if(e.target === this) this.classList.remove("open"); });
+
 $("yr").textContent = Math.max(2026, new Date().getFullYear());
 
 initStore();
