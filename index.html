@@ -453,7 +453,7 @@ function initStore(){
 
 function thumb(p){
   return p.img
-    ? '<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.parentNode.textContent=''+esc(p.emoji)+''">'
+    ? '<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.parentNode.textContent=\''+esc(p.emoji)+'\'">'
     : esc(p.emoji);
 }
 
